@@ -1,4 +1,7 @@
+import Entrada from "../io/entrada"
+import ListagemClientes from "../negocio/listagemClientes"
 import Cliente from "./cliente"
+import CPF from "./cpf"
 import Pet from "./pet"
 import Produto from "./produto"
 import Servico from "./servico"
@@ -26,5 +29,14 @@ export default class Empresa{
 
     public get getPets(){
         return this.pets
+    }
+
+    public deleteClientes():void{
+        let entrada = new Entrada()
+        let valor = entrada.receberTexto("digite o cpf que você queira deletar");
+        
+        const pessoasFiltradas = this.clientes.filter((cliente) => cliente.getCpf.getValor !== valor);
+        this.clientes = pessoasFiltradas
+        
     }
 }

@@ -38,6 +38,10 @@ while (execucao) {
             listagemPet.listar()
             break;
 
+        case 5:
+            empresa.deleteClientes()
+            break
+
         
         case 2:
             let listagem = new ListagemClientes(empresa.getClientes)
