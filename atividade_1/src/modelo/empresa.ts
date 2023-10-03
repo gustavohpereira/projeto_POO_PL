@@ -39,4 +39,13 @@ export default class Empresa{
         this.clientes = pessoasFiltradas
         
     }
+
+    public deletePets():void{
+        let entrada = new Entrada()
+        let valor = entrada.receberTexto("digite o nome do pet que você queira deletar");
+        
+        const pets_filtrados = this.pets.filter((pet) => pet.nome !== valor);
+        this.pets = pets_filtrados
+        
+    }
 }
