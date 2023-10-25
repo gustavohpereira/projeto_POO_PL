@@ -1,7 +1,7 @@
-import Entrada from "../io/entrada";
-import Cliente from "../modelo/cliente";
+import Entrada from "../../io/entrada";
+import Cliente from "../../modelo/cliente";
 
-export default class AtualizarPet{
+export default class AtualizarCliente{
     private clientes: Array<Cliente>
     private entrada: Entrada
 

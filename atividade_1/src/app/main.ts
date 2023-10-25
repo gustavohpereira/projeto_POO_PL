@@ -1,12 +1,16 @@
 import Entrada from "../io/entrada";
 import Empresa from "../modelo/empresa";
 import Pet from "../modelo/pet";
-import ListagemPets from "../negocio/ListagemPets";
-import CadastroCliente from "../negocio/cadastroCliente";
-import CadastroPet from "../negocio/cadastroPet";
-import ListagemClientes from "../negocio/listagemClientes";
-import AtualizarCliente from "../negocio/atualizarCliente";
-import AtualizarPet from "../negocio/atualizarPet";
+import ListagemPets from "../negocio/CRUD pet/ListagemPets";
+import CadastroCliente from "../negocio/CRUD cliente/cadastroCliente";
+import CadastroPet from "../negocio/CRUD pet/cadastroPet";
+import ListagemClientes from "../negocio/CRUD cliente/listagemClientes";
+import AtualizarCliente from "../negocio/CRUD cliente/atualizarCliente";
+import AtualizarPet from "../negocio/CRUD pet/atualizarPet";
+import CadastroServico from "../negocio/CRUD Serviços/cadastro.servico";
+import ListagemServicos from "../negocio/CRUD Serviços/listagemservico";
+import ListagemProdutos from "../negocio/CRUD Produtos/listagemProduto";
+import CadastroProduto from "../negocio/CRUD Produtos/cadastro.produtos";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -16,10 +20,14 @@ while (execucao) {
     console.log(`Opções:`);
     console.log(`1 - Cadastrar cliente`);
     console.log(`2 - Cadastrar Pet`)
+    console.log(`9 - Cadastrar serviços`);
+    console.log(`11 - Cadastrar produtos`)
     console.log(`--------------------------------------`)
     
     console.log(`3 - Listar todos os clientes`);
     console.log(`4 - Listar todos os Pets`);
+    console.log(`10 - listar todos os serviços`);
+    console.log(`12 - listar todos os Produtos`);
     console.log(`--------------------------------------`)
 
     console.log(`5 - Atualizar Cliente`);
@@ -32,7 +40,6 @@ while (execucao) {
 
     let entrada = new Entrada()
     let opcao = entrada.receberNumero(`Por favor, escolha uma opção: `)
-
     switch (opcao) {
         case 1:
             let cadastro = new CadastroCliente(empresa.getClientes)
@@ -72,6 +79,27 @@ while (execucao) {
 
         case 8:
             empresa.deletePets()
+            break
+
+        case 9:
+            let servico = new CadastroServico(empresa.getServicos)
+            servico.cadastrar()
+            break
+
+        case 10:
+            let listagemServicos = new ListagemServicos(empresa.getServicos)
+            listagemServicos.listar()
+            break
+
+
+        case 11:
+            let produto = new CadastroProduto(empresa.getServicos)
+            produto.cadastrar()
+            break
+
+        case 12:
+            let listagemProdutos = new ListagemProdutos(empresa.getServicos)
+            listagemProdutos.listar()
             break
 
         case 0:

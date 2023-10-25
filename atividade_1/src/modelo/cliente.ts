@@ -47,4 +47,9 @@ export default class Cliente {
     public get getPets(): Array<Pet>{
         return this.pets
     }
+
+    public adicionarProduto(produto:Produto){
+       this.produtosConsumidos.push(produto) 
+    }
+    
 }

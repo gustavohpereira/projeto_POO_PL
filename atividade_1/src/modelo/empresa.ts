@@ -1,5 +1,5 @@
 import Entrada from "../io/entrada"
-import ListagemClientes from "../negocio/listagemClientes"
+import ListagemClientes from "../negocio/CRUD cliente/listagemClientes"
 import Cliente from "./cliente"
 import CPF from "./cpf"
 import Pet from "./pet"
