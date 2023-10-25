@@ -14,7 +14,7 @@ export default class ListarProdutosComprados{
 
     }
 
-    public atualizar(){
+    public listar (){
 
         
         let cpfInput = this.entrada.receberTexto("digite o cpf do usuario")

@@ -11,6 +11,8 @@ import CadastroServico from "../negocio/CRUD Serviços/cadastro.servico";
 import ListagemServicos from "../negocio/CRUD Serviços/listagemservico";
 import ListagemProdutos from "../negocio/CRUD Produtos/listagemProduto";
 import CadastroProduto from "../negocio/CRUD Produtos/cadastro.produtos";
+import ListarProdutosComprados from "../negocio/CRUD cliente/listarProdutosComprados";
+import ComprarProdutos from "../negocio/CRUD Produtos/comprarProduto";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -28,6 +30,7 @@ while (execucao) {
     console.log(`4 - Listar todos os Pets`);
     console.log(`10 - listar todos os serviços`);
     console.log(`12 - listar todos os Produtos`);
+    console.log(`14 - Listar produtos consumidos`);
     console.log(`--------------------------------------`)
 
     console.log(`5 - Atualizar Cliente`);
@@ -35,6 +38,10 @@ while (execucao) {
     console.log(`--------------------------------------`)
     console.log(`7 - Deletar CLientes`);
     console.log(`8 - Deletar Pets`);
+    console.log(`--------------------------------------`)
+    console.log(`13 - Comprar produtos`);
+
+
 
     console.log(`0 - Sair`);
 
@@ -100,6 +107,16 @@ while (execucao) {
         case 12:
             let listagemProdutos = new ListagemProdutos(empresa.getServicos)
             listagemProdutos.listar()
+            break
+
+        case 13:
+            let comprar_produtos = new ComprarProdutos(empresa.getClientes,empresa.getProdutos)
+            comprar_produtos.comprar()
+            break
+
+        case 14:
+            let listagemProdutosComprados = new ListarProdutosComprados(empresa.getClientes)
+            listagemProdutosComprados.listar()
             break
 
         case 0:

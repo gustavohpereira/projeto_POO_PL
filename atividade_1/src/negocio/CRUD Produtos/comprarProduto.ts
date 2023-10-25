@@ -14,7 +14,7 @@ export default class ComprarProdutos{
         this.produtos = produtos
     }
 
-    public atualizar(){
+    public comprar(){
 
         console.log(`--------------------------------------`)
         let nome_produto = this.entrada.receberTexto("digite o nome do produto que quer comprar:")
