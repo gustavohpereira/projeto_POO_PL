@@ -1,6 +1,5 @@
 import Entrada from "../io/entrada";
 import Empresa from "../modelo/empresa";
-import Pet from "../modelo/pet";
 import ListagemPets from "../negocio/CRUD pet/ListagemPets";
 import CadastroCliente from "../negocio/CRUD cliente/cadastroCliente";
 import CadastroPet from "../negocio/CRUD pet/cadastroPet";
@@ -15,6 +14,8 @@ import ListarProdutosComprados from "../negocio/CRUD cliente/listarProdutosCompr
 import ComprarProdutos from "../negocio/CRUD Produtos/comprarProduto";
 import ComprarServico from "../negocio/CRUD Serviços/ComprarServico";
 import ListarServicosComprados from "../negocio/CRUD cliente/listarProdutosComprados";
+import listarRankConsumiveis from "../negocio/CRUD cliente/listarRankConsumiveis";
+import rank_consumiveis_gerais from "../negocio/RankConsumiveisGerais";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -33,7 +34,11 @@ while (execucao) {
     console.log(`10 - listar todos os serviços`);
     console.log(`12 - listar todos os Produtos`);
     console.log(`14 - Listar produtos consumidos`);
-    console.log(`15 - Listar produtos contratados`);
+    console.log(`15 - Listar serviços contratados`);
+    console.log(`17 - ranking de quem mais consumiu(por quantidade)`);
+    console.log(`18 - ranking de produtos e serviços mais consumidos`);
+    console.log(`19 - ranking de quem mais consumiu(por valor)`);
+
     console.log(`--------------------------------------`)
 
     console.log(`5 - Atualizar Cliente`);
@@ -45,9 +50,8 @@ while (execucao) {
     console.log(`13 - Comprar produtos`);
     console.log(`15 - Contratar Serviços`);
 
-
-
     console.log(`0 - Sair`);
+    console.log(`\n`);
 
     let entrada = new Entrada()
     let opcao = entrada.receberNumero(`Por favor, escolha uma opção: `)
@@ -123,7 +127,6 @@ while (execucao) {
             listagemProdutosComprados.listar()
             break
 
-
         case 15:
             let servico_comprado = new ComprarServico(empresa.getClientes,empresa.getServicos)
             servico_comprado.comprar()
@@ -133,6 +136,23 @@ while (execucao) {
             let listagemServicosComprados = new ListarServicosComprados(empresa.getClientes)
             listagemServicosComprados.listar()
             break
+
+        case 17:
+            let listagem_rank = new listarRankConsumiveis(empresa.getClientes)
+            listagem_rank.listar()
+            break
+
+        case 18:
+            let listage_rank_geral = new rank_consumiveis_gerais(empresa.getServicos,empresa.getProdutos)
+            listage_rank_geral.listar()
+            break
+
+        
+        case 19:
+            let listage_rank_valor = new listarRankConsumiveis(empresa.getClientes)
+            listage_rank_valor.listar_por_valor()
+            break
+
 
         case 0:
             execucao = false

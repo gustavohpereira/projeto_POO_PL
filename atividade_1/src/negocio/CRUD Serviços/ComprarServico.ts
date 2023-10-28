@@ -37,6 +37,7 @@ export default class ComprarProdutos{
                 for(let cliente of this.clientes){
                     if (cliente.getCpf.getValor == cpfInput)
                         cliente.adicionarservico(servico)
+                        servico.add_score()
                     }
                 }
 
