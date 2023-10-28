@@ -13,6 +13,8 @@ import ListagemProdutos from "../negocio/CRUD Produtos/listagemProduto";
 import CadastroProduto from "../negocio/CRUD Produtos/cadastro.produtos";
 import ListarProdutosComprados from "../negocio/CRUD cliente/listarProdutosComprados";
 import ComprarProdutos from "../negocio/CRUD Produtos/comprarProduto";
+import ComprarServico from "../negocio/CRUD Serviços/ComprarServico";
+import ListarServicosComprados from "../negocio/CRUD cliente/listarProdutosComprados";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -31,6 +33,7 @@ while (execucao) {
     console.log(`10 - listar todos os serviços`);
     console.log(`12 - listar todos os Produtos`);
     console.log(`14 - Listar produtos consumidos`);
+    console.log(`15 - Listar produtos contratados`);
     console.log(`--------------------------------------`)
 
     console.log(`5 - Atualizar Cliente`);
@@ -40,6 +43,7 @@ while (execucao) {
     console.log(`8 - Deletar Pets`);
     console.log(`--------------------------------------`)
     console.log(`13 - Comprar produtos`);
+    console.log(`15 - Contratar Serviços`);
 
 
 
@@ -100,12 +104,12 @@ while (execucao) {
 
 
         case 11:
-            let produto = new CadastroProduto(empresa.getServicos)
+            let produto = new CadastroProduto(empresa.getProdutos)
             produto.cadastrar()
             break
 
         case 12:
-            let listagemProdutos = new ListagemProdutos(empresa.getServicos)
+            let listagemProdutos = new ListagemProdutos(empresa.getProdutos)
             listagemProdutos.listar()
             break
 
@@ -117,6 +121,17 @@ while (execucao) {
         case 14:
             let listagemProdutosComprados = new ListarProdutosComprados(empresa.getClientes)
             listagemProdutosComprados.listar()
+            break
+
+
+        case 15:
+            let servico_comprado = new ComprarServico(empresa.getClientes,empresa.getServicos)
+            servico_comprado.comprar()
+            break
+
+        case 16:
+            let listagemServicosComprados = new ListarServicosComprados(empresa.getClientes)
+            listagemServicosComprados.listar()
             break
 
         case 0:

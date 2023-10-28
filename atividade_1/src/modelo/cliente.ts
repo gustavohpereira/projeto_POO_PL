@@ -51,5 +51,9 @@ export default class Cliente {
     public adicionarProduto(produto:Produto){
        this.produtosConsumidos.push(produto) 
     }
+
+    public adicionarservico(servico:Servico){
+        this.servicosConsumidos.push(servico) 
+     }
     
 }
