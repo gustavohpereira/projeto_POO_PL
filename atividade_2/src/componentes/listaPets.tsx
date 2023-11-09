@@ -1,24 +1,53 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { Component } from "react";
+import React from "react";
 
-type props = {
-    tema: string
+type Pet = {
+  nome: string;
+  raca: string;
+  genero: string;
+  tipo: string;
+  cpfDono: string;
+};
+
+type Props = {
+  tema: string;
+};
+
+function ListaPets({ tema }: Props): React.ReactElement {
+  const pets: Pet[] = [
+    { nome: "Pet 1", raca: "Raça 1", genero: "Masculino", tipo: "Cachorro", cpfDono: "123.456.789-01" },
+    { nome: "Pet 2", raca: "Raça 2", genero: "Feminino", tipo: "Gato", cpfDono: "234.567.890-12" },
+    { nome: "Pet 3", raca: "Raça 3", genero: "Masculino", tipo: "Cachorro", cpfDono: "345.678.901-23" },
+    { nome: "Pet 4", raca: "Raça 4", genero: "Feminino", tipo: "Gato", cpfDono: "456.789.012-34" },
+    { nome: "Pet 5", raca: "Raça 5", genero: "Masculino", tipo: "Cachorro", cpfDono: "567.890.123-45" },
+    { nome: "Pet 6", raca: "Raça 6", genero: "Feminino", tipo: "Gato", cpfDono: "678.901.234-56" },
+  ];
+
+  return (
+    <div className="container-fluid">
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Raça</th>
+            <th scope="col">Gênero</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">CPF do Dono</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pets.map((pet, index) => (
+            <tr key={index} style={{ backgroundColor: tema }}>
+              <td>{pet.nome}</td>
+              <td>{pet.raca}</td>
+              <td>{pet.genero}</td>
+              <td>{pet.tipo}</td>
+              <td>{pet.cpfDono}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
-export default class ListaPets extends Component<props>{
-    render() {
-        let tema = this.props.tema
-        return (
-            <div className="container-fluid">
-                <div className="list-group">
-                    <a href="#" className="list-group-item list-group-item-action">PET 1</a>
-                    <a href="#" className="list-group-item list-group-item-action">PET 2</a>
-                    <a href="#" className="list-group-item list-group-item-action">PET 3</a>
-                    <a href="#" className="list-group-item list-group-item-action" style={{ backgroundColor: tema }} >PET 4</a>
-                    <a href="#" className="list-group-item list-group-item-action">PET 5</a>
-                    <a href="#" className="list-group-item list-group-item-action">PET 6</a>
-                </div>
-            </div>
-        )
-    }
-}
+export default ListaPets;

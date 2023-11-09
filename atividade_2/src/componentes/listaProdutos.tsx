@@ -1,24 +1,46 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Component } from "react";
 
-type props = {
-    tema: string
-}
+type produto = {
+    nome: string;
+    valor: number;
+};
 
-export default class Listaprodutos extends Component<props>{
+type Props = {
+    tema: string;
+};
+
+export default class ListaProduto extends Component<Props> {
+    produtos: produto[] = [
+        { nome: "Produto 1", valor: 50.00 },
+        { nome: "Produto 2", valor: 75.00 },
+        { nome: "Produto 3", valor: 100.00 },
+        { nome: "Produto 4", valor: 120.00 },
+        { nome: "Produto 5", valor: 90.00 },
+        { nome: "Produto 6", valor: 60.00 },
+    ];
+
     render() {
-        let tema = this.props.tema
+        let tema = this.props.tema;
         return (
             <div className="container-fluid">
-                <div className="list-group">
-                    <a href="#" className="list-group-item list-group-item-action">Produto 1</a>
-                    <a href="#" className="list-group-item list-group-item-action">Produto 2</a>
-                    <a href="#" className="list-group-item list-group-item-action">Produto 3</a>
-                    <a href="#" className="list-group-item list-group-item-action" style={{ backgroundColor: tema }} >Produto 4</a>
-                    <a href="#" className="list-group-item list-group-item-action">Produto 5</a>
-                    <a href="#" className="list-group-item list-group-item-action">Produto 6</a>
-                </div>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome do Produto</th>
+                            <th scope="col">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.produtos.map((produto, index) => (
+                            <tr key={index} style={{ backgroundColor: tema }}>
+                                <td>{produto.nome}</td>
+                                <td>{`R$ ${produto.valor.toFixed(2)}`}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
-        )
+        );
     }
 }
