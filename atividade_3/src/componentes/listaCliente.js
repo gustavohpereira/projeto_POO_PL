@@ -3,19 +3,12 @@ import React from "react";
 
 
 
-interface Props {
-    tema: string;
-};
 
-export default function ListaCliente(props:Props) {
-    type Cliente = {
-        nome: string;
-        nomeSocial: string;
-        cpf: string;
-        dataEmissaoCpf: string;
-    };
 
-    const clientes: Cliente[] = [
+export default function ListaCliente(props) {
+    
+
+    const clientes = [
         {
             nome: "Cliente 1",
             nomeSocial: "Nome Social 1",

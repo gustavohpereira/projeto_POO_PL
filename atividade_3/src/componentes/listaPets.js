@@ -1,19 +1,9 @@
 import React from "react";
 
-type Pet = {
-    nome: string;
-    raca: string;
-    genero: string;
-    tipo: string;
-    cpfDono: string;
-};
 
-type Props = {
-    tema: string;
-};
 
-export default function ListaPets({ tema }: Props): React.ReactElement {
-    const pets: Pet[] = [
+export default function ListaPets({ tema }){
+    const pets = [
         { nome: "Pet 1", raca: "Raça 1", genero: "Masculino", tipo: "Cachorro", cpfDono: "123.456.789-01" },
         { nome: "Pet 2", raca: "Raça 2", genero: "Feminino", tipo: "Gato", cpfDono: "234.567.890-12" },
         { nome: "Pet 3", raca: "Raça 3", genero: "Masculino", tipo: "Cachorro", cpfDono: "345.678.901-23" },

@@ -5,19 +5,41 @@ import React from "react";
 
 export default function BarraNavegacao(props) {
     const gerarListaBotoes = () => {
-        if (props.botoes.length <= 0) {
-            return <></>
-        } else {
-            let lista = props.botoes.map(valor =>
-                <li key={valor} className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => props.seletorView(valor, e)}>{valor}</a>
-                </li>
-            )
-            return lista
+        const botoes = props.botoes;
+
+        if (!botoes) {
+            return <></>;
         }
+
+        const botoesKeys = Object.keys(botoes);
+
+        if (botoesKeys.length <= 0) {
+            return <></>;
+        }
+
+        const listaBotoes = botoesKeys.map((key) => {
+            const submenu = botoes[key].map((value) => (
+                <li key={value} className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => props.seletorView(value, e)}>{value}</a>
+                </li>
+            ));
+
+            return (
+                <li key={key} className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {key}
+                    </a>
+                    <ul className="dropdown-menu">
+                        {submenu}
+                    </ul>
+                </li>
+            );
+        });
+
+        return listaBotoes;
     }
 
-    let tema = props.tema
+    let tema = props.tema;
     return (
         <>
             <nav className="navbar navbar-expand-lg" data-bs-theme="light" style={{ backgroundColor: tema, marginBottom: 10 }}>
@@ -34,5 +56,5 @@ export default function BarraNavegacao(props) {
                 </div>
             </nav>
         </>
-    )
+    );
 }

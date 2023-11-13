@@ -1,16 +1,8 @@
 import React from "react";
 
-type Produto = {
-  nome: string;
-  valor: number;
-};
 
-type Props = {
-  tema: string;
-};
-
-export function ListaProduto({ tema }: Props): React.ReactElement {
-  const produtos: Produto[] = [
+export function ListaProduto({ tema }) {
+  const produtos = [
     { nome: "Produto 1", valor: 50.00 },
     { nome: "Produto 2", valor: 75.00 },
     { nome: "Produto 3", valor: 100.00 },

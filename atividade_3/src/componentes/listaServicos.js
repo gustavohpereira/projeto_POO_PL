@@ -1,16 +1,9 @@
 import React from "react";
 
-type Servico = {
-  nome: string;
-  valor: number;
-};
 
-type Props = {
-  tema: string;
-};
 
-export function ListaServico({ tema }: Props): React.ReactElement {
-  const servicos: Servico[] = [
+export function ListaServico({ tema }){
+  const servicos = [
     { nome: "Serviço 1", valor: 50.00 },
     { nome: "Serviço 2", valor: 75.00 },
     { nome: "Serviço 3", valor: 100.00 },

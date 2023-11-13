@@ -9,10 +9,10 @@ import ListaPets from "./listaPets";
 import { ListaProduto } from "./listaProdutos";
 import { ListaServico } from "./listaServicos";
 
-export function Roteador(){
-  const [tela, setTela] = useState<string>('lista de clientes');
+export default function Roteador(){
+  const [tela, setTela] = useState('lista de clientes');
 
-  const selecionarView = (novaTela: string, evento: React.MouseEvent) => {
+  const selecionarView = (novaTela, evento) => {
     evento.preventDefault();
     console.log(novaTela);
     setTela(novaTela);
@@ -25,7 +25,7 @@ export function Roteador(){
     pets: [`cadastrar pet`, `lista de pets`],
   };
 
-  let conteudo: React.ReactNode;
+  let conteudo =  null
 
   switch (tela) {
     case 'lista de clientes':
@@ -55,7 +55,7 @@ export function Roteador(){
     default:
       conteudo = null;
   }
-
+  console.log("botoes", botoes)
   return (
     <>
       <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={botoes} />
@@ -63,5 +63,3 @@ export function Roteador(){
     </>
   );
 };
-
-export default Roteador;
