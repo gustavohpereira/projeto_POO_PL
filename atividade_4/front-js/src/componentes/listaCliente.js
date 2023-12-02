@@ -27,16 +27,22 @@ export default function ListaCliente(props) {
         setClienteSelecionado(client);
     };
     
-      const handleVoltar = () => {
+    const handleVoltar = () => {
         setClienteSelecionado(null);
     };
+
+    const handleDeletar = async (client) => {
+        await axios.delete("http://localhost:32831/cliente/excluir", client).then(() => {
+            window.location.reload()
+        })
+    }
 
     return (
         <div>
             {clienteSelecionado ? (
                 <VisualizarCliente client={clienteSelecionado} handleVoltar={handleVoltar} />
             ): (
-                <TabelaClientes onVisualizar={handleVisualizar} clients={clients} />
+                <TabelaClientes onVisualizar={handleVisualizar} handleDeletar={handleDeletar} clients={clients} />
             )}
         </div>
     );
@@ -60,6 +66,7 @@ export function TabelaClientes(props) {
                             <td>{client.nomeSocial}</td>
                             <td>
                                 <button onClick={() => props.onVisualizar(client)}>Visualizar</button>
+                                <button onClick={() => props.handleDeletar(client)}>Excluir</button>
                             </td>
                         </tr>
                     ))}
