@@ -18,7 +18,7 @@ export default function Roteador(){
   };
 
   const botoes = {
-    clientes: [`cadastrar Cliente`, `lista de clientes`],
+    clientes: [`cadastrar cliente`, `lista de clientes`],
     servicos: [`cadastrar servico`, `lista de serviços`],
     produtos: [`cadastrar produtos`, `lista de produtos`],
     pets: [`cadastrar pet`, `lista de pets`],

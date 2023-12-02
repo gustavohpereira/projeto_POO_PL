@@ -23,8 +23,6 @@ export default function ListaCliente(props) {
 
     const [clienteSelecionado, setClienteSelecionado] = useState(null)
 
-    console.log(clienteSelecionado);
-
     const handleVisualizar = (client) => {
         setClienteSelecionado(client);
     };
