@@ -34,6 +34,31 @@ export default function FormularioCadastroCliente(props) {
                     <input type="text" name="email" className="form-control" placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addon1" onChange={handleInputChange} />
                 </div>
                 <div className="input-group mb-3">
+                    <input type="text" name="estado" className="form-control" placeholder="Estado" aria-label="Estado" aria-describedby="basic-addon1" onChange={handleInputChange} />
+                </div>
+                <div className="input-group mb-3">
+                    <input type="text" name="cidade" className="form-control" placeholder="Cidade" aria-label="Cidade" aria-describedby="basic-addon1" onChange={handleInputChange} />
+                </div>
+                <div className="input-group mb-3">
+                    <input type="text" name="rua" className="form-control" placeholder="Rua" aria-label="Rua" aria-describedby="basic-addon1" onChange={handleInputChange} />
+                </div>
+                <div className="input-group mb-3">
+                    <input type="text" name="numero" className="form-control" placeholder="Número" aria-label="Número" aria-describedby="basic-addon1" onChange={handleInputChange} />
+                </div>
+                <div className="input-group mb-3">
+                    <input type="text" name="codigoPostal" className="form-control" placeholder="Código Postal" aria-label="Código Postal" aria-describedby="basic-addon1" onChange={handleInputChange} />
+                </div>
+                <div className="input-group mb-3">
+                    <input type="text" name="informacoesAdicionais" className="form-control" placeholder="Informações Adicionais" aria-label="Informações Adicionais" aria-describedby="basic-addon1" onChange={handleInputChange} />
+                </div>
+                <div className="input-group mb-3">
+                    <input type="text" name="ddd" className="form-control" placeholder="DDD" aria-label="DDD" aria-describedby="basic-addon1" onChange={handleInputChange} />
+                </div>
+                <div className="input-group mb-3">
+                    <input type="text" name="numeroTelefone" className="form-control" placeholder="Número de Telefone" aria-label="Número de Telefone" aria-describedby="basic-addon1" onChange={handleInputChange} />
+                </div>
+
+                <div className="input-group mb-3">
                     <button className="btn btn-outline-secondary" type="button" style={{ background: tema }} onClick={handleCadastrar}>Cadastrar</button>
                 </div>
             </form>
