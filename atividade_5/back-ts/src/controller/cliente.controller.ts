@@ -58,9 +58,40 @@ export default class ClienteController {
         }
     }
 
+    public async updateCliente(req: Request, res: Response) {
+        if (Object.keys(req.body).length === 0) return res.sendStatus(400)
+        try {
+            await this.clienteRepository.findOne({
+                where: {
+                    id: Number(req.params.clienteId)
+                },
+                relations: {
+                    telefones: true,
+                    produtosConsumidos: true,
+                    servicosConsumidos: true,
+                    pets: true
+                }
+            })
+                .then(async (cliente) => {
+                    if (!cliente) {
+                        res.status(404).send({ message: "Client not found" })
+                    } else {
+                        await this.clienteRepository.save({ ...cliente, ...req.body }).then((cliente) => {
+                            res.status(200).send(cliente)
+                        })
+                    }
+                })
+        } catch (error) {
+            console.error(error)
+            return res.status(500).send({ message: "Internal server error" })
+        }
+    }
+
     public async deleteClienteById(req: Request, res: Response) {
         try {
-            await this.clienteRepository.delete(Number(req.params.clienteId))
+            await this.clienteRepository.delete(Number(req.params.clienteId)).then(() => {
+                return res.status(200).send({ message: "Client deleted succesfully" })
+            })
         } catch (error) {
             console.error(error)
             return res.status(500).send({ message: "Internal server error" })
