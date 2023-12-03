@@ -4,9 +4,11 @@ import { cliente as clienteRouter } from './routes/cliente.router';
 import { produto as produtoRouter } from './routes/produto.router';
 import { servico as servicoRouter } from './routes/servico.router';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = Express()
 app.use(bodyParser.json())
+app.use(cors());
 
 appDataSource.initialize().then(() => {
     console.log("Database initialized succesfully");
