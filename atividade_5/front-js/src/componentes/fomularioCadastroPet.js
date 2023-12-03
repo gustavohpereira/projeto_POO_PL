@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import axios from "axios";
 
 export function FormularioCadastroPet({ tema }) {
   const [petData, setPetData] = useState({
@@ -15,8 +16,12 @@ export function FormularioCadastroPet({ tema }) {
     setPetData({ ...petData, [id]: value });
   };
 
-  const handleCadastrar = () => {
+  const handleCadastrar = async () => {
     console.log("Pet Data:", petData);
+
+    await axios.post("http://localhost:3000/cliente/addpet", petData).then(() => {
+        window.location.reload()
+    })
 
   };
 

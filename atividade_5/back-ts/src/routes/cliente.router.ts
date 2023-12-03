@@ -26,3 +26,7 @@ cliente.put('/:clienteId/update', async (req, res) => {
 cliente.delete('/:clienteId/delete', async (req, res) => {
     await controller.deleteClienteById(req, res)
 })
+
+cliente.post('/addpet', async (req, res) => {
+    await controller.addPet(req, res)
+})
