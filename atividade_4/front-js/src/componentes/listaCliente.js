@@ -153,7 +153,7 @@ export function VisualizarCliente(props) {
                     </tr>
                 </tbody>
             </table>
-            <button onClick={props.handleVoltar}>Voltar</button>
+            <button  className="btn btn-outline-secondary" onClick={props.handleVoltar}>Voltar</button>
         </div>
     );
 }
