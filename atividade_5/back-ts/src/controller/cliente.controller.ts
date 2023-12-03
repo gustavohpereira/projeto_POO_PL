@@ -32,4 +32,30 @@ export default class ClienteController {
         }
     }
 
+    public async fetchClienteById(req: Request, res: Response) {
+        try {
+            await this.clienteRepository.find({
+                where: {
+                    id: Number(req.params.clienteId)
+                },
+                relations: {
+                    telefones: true,
+                    produtosConsumidos: true,
+                    servicosConsumidos: true,
+                    pets: true
+                }
+            })
+            .then((cliente) => {
+                if(!cliente){
+                    res.status(404).send({ message: "Client not found" })
+                }else{
+                    res.status(200).send(cliente)
+                }
+            })
+        } catch (error) {
+            console.error(error)
+            return res.status(500).send({ message: "Internal server error" })
+        }
+    }
+
 }
