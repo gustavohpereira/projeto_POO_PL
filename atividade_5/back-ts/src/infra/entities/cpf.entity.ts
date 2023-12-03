@@ -13,6 +13,6 @@ export default class CPF {
     @Column()
     dataEmissao!: Date
 
-    @OneToOne(() => Cliente, cliente => cliente.cpf)
+    @OneToOne(() => Cliente, cliente => cliente.cpf, {onDelete: "CASCADE"})
     cliente!: Cliente
 }

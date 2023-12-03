@@ -18,3 +18,7 @@ cliente.get('/fetchall', async (req, res) => {
 cliente.get('/:clienteId/fetch', async (req, res) => {
     await controller.fetchClienteById(req, res)
 })
+
+cliente.delete('/:clienteId/delete', async (req, res) => {
+    await controller.deleteClienteById(req, res)
+})

@@ -18,17 +18,17 @@ export default class Cliente {
     @Column()
     nomeSocial!: string
 
-    @OneToOne(() => CPF, cpf => cpf.cliente, { cascade: true })
+    @OneToOne(() => CPF, cpf => cpf.cliente, { cascade: true, onDelete: "CASCADE" })
     @JoinColumn()
     cpf!: CPF
 
-    @OneToMany(() => RG, rg => rg.cliente, { cascade: true })
+    @OneToMany(() => RG, rg => rg.cliente, { cascade: true, onDelete: "CASCADE" })
     rgs!: RG[]
 
     @CreateDateColumn()
     dataCadastro!: Date
 
-    @OneToMany(() => Telefone, telefone => telefone.cliente, { cascade: true })
+    @OneToMany(() => Telefone, telefone => telefone.cliente, { cascade: true, onDelete: "CASCADE" })
     telefones!: Telefone[]
 
     @ManyToMany(() => Produto, produto => produto.clientes)
@@ -39,6 +39,6 @@ export default class Cliente {
     @JoinTable()
     servicosConsumidos!: Servico[];
 
-    @OneToMany(() => Pet, pet => pet.cliente, { cascade: true })
+    @OneToMany(() => Pet, pet => pet.cliente, { cascade: true, onDelete: "CASCADE" })
     pets!: Pet[]
 }

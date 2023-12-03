@@ -19,7 +19,7 @@ export default class Pet {
     @Column()
     genero!: string
 
-    @ManyToOne(() => Cliente, cliente => cliente.pets)
+    @ManyToOne(() => Cliente, cliente => cliente.pets, {onDelete: "CASCADE"})
     cliente!: Cliente;
 
 }

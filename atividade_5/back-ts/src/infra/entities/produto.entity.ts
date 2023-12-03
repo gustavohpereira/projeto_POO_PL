@@ -10,6 +10,6 @@ export default class Produto {
     @Column()
     nome!: string
 
-    @ManyToMany(() => Cliente, cliente => cliente.produtosConsumidos)
+    @ManyToMany(() => Cliente, cliente => cliente.produtosConsumidos, {onDelete: "CASCADE"})
     clientes!: Cliente[];
 }

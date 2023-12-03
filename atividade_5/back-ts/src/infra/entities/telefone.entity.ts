@@ -13,6 +13,6 @@ export default class Telefone {
     @Column()
     numero!: string
 
-    @ManyToOne(() => Cliente, cliente => cliente.telefones)
+    @ManyToOne(() => Cliente, cliente => cliente.telefones, {onDelete: "CASCADE"})
     cliente!: Cliente;
 }

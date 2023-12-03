@@ -13,6 +13,6 @@ export default class RG {
     @Column()
     dataEmissao!: Date
 
-    @ManyToOne(() => Cliente, cliente => cliente.rgs)
+    @ManyToOne(() => Cliente, cliente => cliente.rgs, {onDelete: "CASCADE"})
     cliente!: Cliente;
 }
