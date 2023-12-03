@@ -39,6 +39,6 @@ export default class Cliente {
     @JoinTable()
     servicosConsumidos!: Servico[];
 
-    @OneToMany(() => Pet, pet => pet.cliente)
+    @OneToMany(() => Pet, pet => pet.cliente, { cascade: true })
     pets!: Pet[]
 }
