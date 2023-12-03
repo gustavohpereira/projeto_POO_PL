@@ -10,3 +10,7 @@ const controller = new ClienteController(appDataSource.getRepository(Cliente))
 cliente.post('/create', async (req, res) => {
     await controller.createCliente(req, res)
 })
+
+cliente.get('/fetchall', async (req, res) => {
+    await controller.fetchClientes(req, res)
+})

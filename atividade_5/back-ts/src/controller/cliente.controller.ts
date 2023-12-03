@@ -21,4 +21,15 @@ export default class ClienteController {
         }
     }
 
+    public async fetchClientes(req: Request, res: Response) {
+        try {
+            await this.clienteRepository.find().then((clientes) => {
+                return res.status(200).send(clientes)
+            })
+        } catch (error) {
+            console.error(error)
+            return res.status(500).send({ message: "Internal server error" })
+        }
+    }
+
 }
