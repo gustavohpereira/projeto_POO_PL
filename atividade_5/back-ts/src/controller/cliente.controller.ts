@@ -42,7 +42,9 @@ export default class ClienteController {
                     telefones: true,
                     produtosConsumidos: true,
                     servicosConsumidos: true,
-                    pets: true
+                    pets: true,
+                    cpf: true,
+                    rgs: true
                 }
             })
                 .then((cliente) => {
@@ -92,6 +94,30 @@ export default class ClienteController {
             await this.clienteRepository.delete(Number(req.params.clienteId)).then(() => {
                 return res.status(200).send({ message: "Client deleted succesfully" })
             })
+        } catch (error) {
+            console.error(error)
+            return res.status(500).send({ message: "Internal server error" })
+        }
+    }
+
+    public async addPet(req: Request, res: Response) {
+        const { cpf_dono } = req.body
+        if (cpf_dono == null) return res.status(404).send({ message: "Client not found" })
+        try {
+            let cliente = await this.clienteRepository
+                .createQueryBuilder('cliente')
+                .innerJoinAndSelect('cliente.cpf', 'cpf')
+                .leftJoinAndSelect('cliente.pets', 'pets')
+                .where('cpf.valor = :valorCPF', { valorCPF: cpf_dono })
+                .getOne()
+            delete req.body.cpf_dono
+            if(cliente){
+                cliente.pets.push(req.body)
+                await this.clienteRepository.save(cliente).then((response) => {
+                    res.status(200).send(response)
+                })
+            }
+
         } catch (error) {
             console.error(error)
             return res.status(500).send({ message: "Internal server error" })
