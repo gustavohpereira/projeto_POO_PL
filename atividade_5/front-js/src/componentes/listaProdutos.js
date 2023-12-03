@@ -1,15 +1,25 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios"
 
 export function ListaProduto({ tema }) {
-  const produtos = [
-    { nome: "Produto 1", valor: 50.00 },
-    { nome: "Produto 2", valor: 75.00 },
-    { nome: "Produto 3", valor: 100.00 },
-    { nome: "Produto 4", valor: 120.00 },
-    { nome: "Produto 5", valor: 90.00 },
-    { nome: "Produto 6", valor: 60.00 },
-  ];
+  const [produtos, setProdutos] = useState([])
+
+  const fetchClients = async () => {
+      await axios.get("http://localhost:3000/produto/fetchall", {
+          validateStatus: function(status) {
+              return true
+          }
+      }).then((response) => {
+          const data = response.data
+          setProdutos(data)
+      })
+  }
+
+  useEffect(() => {
+      fetchClients()
+  }, [])
+
+
 
   return (
     <div className="container-fluid">
@@ -17,14 +27,12 @@ export function ListaProduto({ tema }) {
         <thead>
           <tr>
             <th scope="col">Nome do Produto</th>
-            <th scope="col">Valor</th>
           </tr>
         </thead>
         <tbody>
           {produtos.map((produto, index) => (
             <tr key={index} style={{ backgroundColor: tema }}>
               <td>{produto.nome}</td>
-              <td>{`R$ ${produto.valor.toFixed(2)}`}</td>
             </tr>
           ))}
         </tbody>

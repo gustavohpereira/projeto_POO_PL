@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import axios from "axios"
 export function FormularioCadastroProdutos() {
   const [produtoData, setProdutoData] = useState({
     nome: "",
@@ -11,10 +11,14 @@ export function FormularioCadastroProdutos() {
     setProdutoData({ ...produtoData, [name]: value });
   };
 
-  const handleCadastrar = () => {
-
-    console.log("Produto Data:", produtoData);
-
+  const handleCadastrar = async () => {
+    try{
+      await axios.post("http://localhost:3000/produto/create", produtoData).then(() => {
+          window.location.reload()
+      })
+      }catch(error){
+          console.error(error)
+      }
   };
 
   return (
