@@ -7,8 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.fatec.pl.modelo.Cliente;
 import com.fatec.pl.modelo.Endereco;
+import com.fatec.pl.modelo.Servico;
 import com.fatec.pl.modelo.Telefone;
 import com.fatec.pl.repositorio.RepositorioCliente;
+import com.fatec.pl.repositorio.RepositorioServico;
 
 @SpringBootApplication
 public class PlApplication implements CommandLineRunner {
@@ -16,12 +18,19 @@ public class PlApplication implements CommandLineRunner {
 	@Autowired
 	private RepositorioCliente repositorio;
 
+	@Autowired
+	private RepositorioServico repositorioServico;
+
 	public static void main(String[] args) {
 		SpringApplication.run(PlApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		Servico servico = new Servico();
+		servico.setNome("Corte de Cabelo");
+		servico.setValor(50);
 
 		Cliente cliente = new Cliente();
 		cliente.setNome("Pedro Alcântara de Bragança e Bourbon");

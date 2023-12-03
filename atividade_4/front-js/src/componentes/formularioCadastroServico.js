@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios"
 
 export function FormularioCadastroServico({ tema }) {
   const [servicoData, setServicoData] = useState({
@@ -9,12 +10,17 @@ export function FormularioCadastroServico({ tema }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setServicoData({ ...servicoData, [name]: value });
+    console.log(servicoData)
   };
 
-  const handleCadastrar = () => {
-    // Logic to use servicoData for registration
-    console.log("Serviço Data:", servicoData);
-    // Additional logic for form submission or API calls, etc.
+  const handleCadastrar = async () => {
+    // try{
+    //   await axios.post("http://localhost:32831/cliente/cadastrar", servicoData).then(() => {
+    //       window.location.reload()
+    //   })
+    //   }catch(error){
+    //       console.error(error)
+    //   }
   };
 
   return (
