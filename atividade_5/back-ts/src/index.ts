@@ -2,9 +2,11 @@ import Express from 'express';
 import appDataSource from "./infra/data-source"
 import { cliente as clienteRouter } from './routes/cliente.router';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = Express()
 app.use(bodyParser.json())
+app.use(cors());
 
 appDataSource.initialize().then(() => {
     console.log("Database initialized succesfully");
@@ -14,3 +16,4 @@ appDataSource.initialize().then(() => {
 })
 
 app.use('/cliente', clienteRouter)
+
