@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function FormularioCadastroCliente (props) {
+    console.log("FormularioCadastroCliente");
     const [clienteData, setClienteData] = useState({
         nome: "",
         nomeSocial: "",

@@ -73,6 +73,7 @@ public class ControleCliente {
 	@SuppressWarnings("deprecation")
 	@DeleteMapping("/cliente/excluir")
 	public ResponseEntity<?> excluirCliente(@RequestBody Cliente exclusao) {
+		System.out.println(exclusao);
 		Cliente cliente = repositorio.getById(exclusao.getId());
 		if (cliente == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

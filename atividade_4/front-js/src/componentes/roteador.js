@@ -25,12 +25,13 @@ export default function Roteador(){
   };
 
   let conteudo =  null
-
+  console.log("tela",tela)
   switch (tela) {
     case 'lista de clientes':
       conteudo = <ListaCliente tema="#e3f2fd" />;
       break;
-    case 'cadastrar Cliente':
+    case 'cadastrar cliente':
+      
       conteudo = <FormularioCadastroCliente tema="#e3f2fd" />;
       break;
     case 'cadastrar servico':

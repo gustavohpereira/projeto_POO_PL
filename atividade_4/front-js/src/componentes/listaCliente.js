@@ -32,8 +32,9 @@ export default function ListaCliente(props) {
     };
 
     const handleDeletar = async (client) => {
-        await axios.delete("http://localhost:32831/cliente/excluir", client).then(() => {
-            window.location.reload()
+        console.log(client)
+        await axios.delete("http://localhost:32831/cliente/excluir", {data:{id:client.id}}).then(() => {
+            window.location.reload()    
         })
     }
 
