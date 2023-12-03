@@ -1,4 +1,4 @@
-import { DataSource, getRepository } from 'typeorm';
+import { DataSource } from 'typeorm';
 
 const appDataSource = new DataSource({
     type: "mysql",
