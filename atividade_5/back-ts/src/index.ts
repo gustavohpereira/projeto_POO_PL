@@ -1,6 +1,8 @@
 import Express from 'express';
 import appDataSource from "./infra/data-source"
 import { cliente as clienteRouter } from './routes/cliente.router';
+import { produto as produtoRouter } from './routes/produto.router';
+import { servico as servicoRouter } from './routes/servico.router';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
@@ -16,4 +18,5 @@ appDataSource.initialize().then(() => {
 })
 
 app.use('/cliente', clienteRouter)
-
+app.use('/produto', produtoRouter)
+app.use('/servico', servicoRouter)
